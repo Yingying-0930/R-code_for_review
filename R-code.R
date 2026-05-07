@@ -365,9 +365,9 @@ BMI_stats <- data.frame(
   Mean = mean(participant_data$BMI_continuous),
   SD = sd(participant_data$BMI_continuous),
   Median = median(participant_data$BMI_continuous),
-  IQR = IQR(participant_data$BMI_continuous)
+  Q1 = quantile(participant_data$BMI_continuous, probs = 0.25),
+  Q3 = quantile(participant_data$BMI_continuous, probs = 0.75)
 )
-
 print(BMI_stats)
 
 # ========================== 2. Data Cleaning ==========================
