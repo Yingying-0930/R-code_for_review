@@ -25,10 +25,11 @@ data <- data.frame(
   ID = 1:22,
   Gender = rep(c("male", "female"), c(n_male, n_female)),
   Age = rep(c(30, 25), c(n_male, n_female)),
+  # Initial body weight and body fat percentage (Weight1 and Body_Fat_Percentage1)
   Weight1 = round(c(rnorm(n_male, 85, 8), rnorm(n_female, 60, 6)), 1),
   Body_Fat_Percentage1 = round(c(rnorm(n_male, 29, 3), rnorm(n_female, 36, 3)), 1)
 )
-
+  # Weight and body fat percentage after intervention (Weight2 and Body_Fat_Percentage2)
 data$Weight2 <- round(data$Weight1 - rnorm(22, 2, 1.5), 1)
 
 data$Body_Fat_Percentage2 <- round(data$Body_Fat_Percentage1 + rnorm(22, -0.2, 1.5), 1)
@@ -45,18 +46,17 @@ str(data)
 
 desc_stats <- data %>%
   summarise(
-    # Initial body weight and body fat percentage (Weight1 and Body_Fat_Percentage1)
     mean_weight1 = mean(Weight1, na.rm = TRUE),
     sd_weight1 = sd(Weight1, na.rm = TRUE),
     median_weight1 = median(Weight1, na.rm = TRUE),
-    q1_weight1 = quantile(Weight1, 0.25, na.rm = TRUE),
-    q3_weight1 = quantile(Weight1, 0.75, na.rm = TRUE),
+    q1_weight1 = quantile(Weight1, 0.25, na.rm = TRUE), q3_weight1 = quantile(Weight1, 0.75, na.rm = TRUE),
     iqr_weight1 = IQR(Weight1, na.rm = TRUE),
-    # Weight and body fat percentage after intervention (Weight2 and Body_Fat_Percentage2)
+    
     mean_fat1 = mean(Body_Fat_Percentage1, na.rm = TRUE),
+    median_fat1 = median(Body_Fat_Percentage1, na.rm = TRUE),
     sd_fat1 = sd(Body_Fat_Percentage1, na.rm = TRUE),
-    mean_fat2 = mean(Body_Fat_Percentage2, na.rm = TRUE),
-    sd_fat2 = sd(Body_Fat_Percentage2, na.rm = TRUE)
+    q1_fat1 = quantile(Body_Fat_Percentage1, 0.25, na.rm = TRUE), q3_fat1 = quantile(Body_Fat_Percentage1, 0.75, na.rm = TRUE),
+    iqr_fat1 = IQR(Body_Fat_Percentage1, na.rm = TRUE)
   )
 print(desc_stats)
 
