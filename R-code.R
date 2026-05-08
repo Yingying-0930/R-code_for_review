@@ -199,11 +199,11 @@ head(long_data)
   print(fat_plot)
   
 # Combined plot
-  combined_plot <- ggarrange(weight_plot, fat_plot, ncol = 2)
-  print(combined_plot)
+  combined_plot1 <- ggarrange(weight_plot, fat_plot, ncol = 2)
+  print(combined_plot1)
 
 # Save plots
-ggsave("combined_changes.pdf", combined_plot, width = 12, height = 5)
+ggsave("combined_changes.pdf", combined_plot1, width = 12, height = 5)
 
 # ========================== 9. Gender-stratified Analysis ==========================
 
@@ -1035,7 +1035,7 @@ FAT_plot <- ggplot(long_data, aes(x = Time, y = FAT, group = ID)) +
 print(FAT_plot)
 
 # 8.4 Combined plot (CHO and FAT side by side)
-combined_plot <- ggarrange(CHO_plot, FAT_plot, ncol = 2)
-print(combined_plot)
-ggsave("Figure_combined_oxidation.pdf", combined_plot, width = 12, height = 5)
+combined_plot2 <- ggarrange(CHO_plot, FAT_plot, ncol = 2)
+print(combined_plot2)
+ggsave("Figure_combined_oxidation.pdf", combined_plot2, width = 12, height = 5)
 
